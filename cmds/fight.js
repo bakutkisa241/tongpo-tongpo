@@ -78,7 +78,6 @@ module.exports.run = (bot, message, args) => {
   }
 
   fs.writeFile("../xp.json", JSON.stringify(xp), (err) => {
-    if(err) cosole.log(err)
   });
 }
 
