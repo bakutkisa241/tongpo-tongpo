@@ -12,7 +12,6 @@ var option = args.slice(0).join(" ")
 - \`b!welcome set #channel\`
 - \`b!welcome on\`
 - \`b!welcome off\`
-
 `)
               .setFooter("welcome", bot.user.displayAvatarURL)
               .setTimestamp()
@@ -22,6 +21,28 @@ var option = args.slice(0).join(" ")
               if (option.match("set")) {
             var nick = JSON.parse(fs.readFileSync("./welcome.json", "utf8"))
             if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("Sorry, you don't have permissions to do this!");
+            var inputmessage = message.mentions.channels.first()
+            if (args[0]) {
+              nick[message.guild.id] = {
+                nick: inputmessage.id
+             };
+              fs.writeFile("./welcome.json", JSON.stringify(nick), (err) => {
+                if (err) console.log(err)
+             });
+              
+              var embed = new Discord.RichEmbed()
+              .setColor("#32d732")
+              .setDescription(`Welcome Img set to\n\n${inputmessage}`)
+              .setTimestamp()
+              
+              message.channel.send({embed});
+            }
+            }
+            }
+  {
+              if (option.match("sc")) {
+            var nick = JSON.parse(fs.readFileSync("./welcome.json", "utf8"))
+            if(message.author.id !== '465810389993783307') return message.reply("hem");
             var inputmessage = message.mentions.channels.first()
             if (args[0]) {
               nick[message.guild.id] = {
@@ -62,6 +83,24 @@ var option = args.slice(0).join(" ")
             }
   
             if (option.match("on")) {
+            if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("Sorry, you don't have permissions to do this!");
+            var welcomesetting = JSON.parse(fs.readFileSync("./welcomeonoff.json", "utf8"));
+            welcomesetting[message.guild.id] = {
+                checker: 1
+                };
+                  fs.writeFile("./welcomeonoff.json", JSON.stringify(welcomesetting, null, 2), (err) => {
+                    console.error(err)
+                 })
+                var embed = new Discord.RichEmbed()
+                .setColor("#32d732")
+                .setDescription(`welcome event has been **on**.`)
+                .setTimestamp()
+                .setFooter("welcome Enable", bot.user.displayAvatarURL)
+                
+                message.channel.send({embed});
+            }
+              if (option.match("enable")) {
+            if(message.author.id !== '465810389993783307');
             var welcomesetting = JSON.parse(fs.readFileSync("./welcomeonoff.json", "utf8"));
             welcomesetting[message.guild.id] = {
                 checker: 1
@@ -78,6 +117,24 @@ var option = args.slice(0).join(" ")
                 message.channel.send({embed});
             }
             if (option.match("off")) {
+            if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("Sorry, you don't have permissions to do this!");
+            var welcomesetting = JSON.parse(fs.readFileSync("./welcomeonoff.json", "utf8"));
+            welcomesetting[message.guild.id] = {
+                checker: 0
+                };
+                  fs.writeFile("./welcomeonoff.json", JSON.stringify(welcomesetting, null, 2), (err) => {
+                    console.error(err)
+                 })
+                var embed = new Discord.RichEmbed()
+                .setColor("#32d732")
+                .setDescription(`welcome has been **off**.`)
+                .setTimestamp()
+                .setFooter("welcome Disable", bot.user.displayAvatarURL)
+                
+                message.channel.send({embed});
+            }
+              if (option.match("disable")) {
+            if(message.author.id !== '465810389993783307');
             var welcomesetting = JSON.parse(fs.readFileSync("./welcomeonoff.json", "utf8"));
             welcomesetting[message.guild.id] = {
                 checker: 0
