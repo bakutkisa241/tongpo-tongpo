@@ -9,18 +9,18 @@ var option = args.slice(0).join(" ")
               .setColor("#32d732")
               .setDescription(`
 **COMMAND:**
-- \`b!leave set #channel\`
-- \`b!leave on\`
-- \`b!leave off\`
+- \`b!farewell set #channel\`
+- \`b!farewell on\`
+- \`b!farewell off\`
 `)
-              .setFooter("Leave", bot.user.displayAvatarURL)
+              .setFooter("Farewell", bot.user.displayAvatarURL)
               .setTimestamp()
               message.react("📜")
               message.channel.send({embed});
             } else {
               if (option.match("set")) {
             var nick = JSON.parse(fs.readFileSync("./leave.json", "utf8"))
-            if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("Sorry, you don't have permissions to do this!");
+            if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`**${message.author} Sorry, But You Need \`MANAGE CHANNELS\` Permissions To Use This Command!**`);
             var inputmessage = message.mentions.channels.first()
             if (args[0]) {
               nick[message.guild.id] = {
@@ -32,7 +32,7 @@ var option = args.slice(0).join(" ")
               
               var embed = new Discord.RichEmbed()
               .setColor("#32d732")
-              .setDescription(`leave Img set to\n\n${inputmessage}`)
+              .setDescription(`Farewell set to\n\n${inputmessage}`)
               .setTimestamp()
               
               message.channel.send({embed});
@@ -54,7 +54,7 @@ var option = args.slice(0).join(" ")
               
               var embed = new Discord.RichEmbed()
               .setColor("#32d732")
-              .setDescription(`leave Img set to\n\n${inputmessage}`)
+              .setDescription(`Farewell set to\n\n${inputmessage}`)
               .setTimestamp()
               
               message.channel.send({embed});
@@ -63,7 +63,7 @@ var option = args.slice(0).join(" ")
             }
                 if (option.match("img")) {
             var welcomeimg = JSON.parse(fs.readFileSync("./leave.json", "utf8"))
-            if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("Sorry, you don't have permissions to do this!");
+            if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`**${message.author} Sorry, But You Need \`MANAGE CHANNELS\` Permissions To Use This Command!**`);
             var inputmessage = args.slice(0).join(" ")
             if (args[1]) {
               welcomeimg[message.guild.id] = {
@@ -75,7 +75,7 @@ var option = args.slice(0).join(" ")
               
               var embed = new Discord.RichEmbed()
               .setColor("#32d732")
-              .setDescription(`leave Img set to\n\n${inputmessage}`)
+              .setDescription(`Farewell set to\n\n${inputmessage}`)
               .setTimestamp()
               
               message.channel.send({embed});
@@ -83,7 +83,7 @@ var option = args.slice(0).join(" ")
             }
   
             if (option.match("on")) {
-            if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("Sorry, you don't have permissions to do this!");
+            if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`**${message.author} Sorry, But You Need \`MANAGE CHANNELS\` Permissions To Use This Command!**`);
             var welcomesetting = JSON.parse(fs.readFileSync("./leaveonoff.json", "utf8"));
             welcomesetting[message.guild.id] = {
                 checker: 1
@@ -110,14 +110,14 @@ var option = args.slice(0).join(" ")
                  })
                 var embed = new Discord.RichEmbed()
                 .setColor("#32d732")
-                .setDescription(`leave event has been **on**.`)
+                .setDescription(`Farewell event has been **on**.`)
                 .setTimestamp()
-                .setFooter("leave Enable", bot.user.displayAvatarURL)
+                .setFooter("Farewell Enable", bot.user.displayAvatarURL)
                 
                 message.channel.send({embed});
             }
             if (option.match("off")) {
-            if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("Sorry, you don't have permissions to do this!");
+            if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`**${message.author} Sorry, But You Need \`MANAGE CHANNELS\` Permissions To Use This Command!**`);
             var welcomesetting = JSON.parse(fs.readFileSync("./leaveonoff.json", "utf8"));
             welcomesetting[message.guild.id] = {
                 checker: 0
@@ -127,9 +127,9 @@ var option = args.slice(0).join(" ")
                  })
                 var embed = new Discord.RichEmbed()
                 .setColor("#32d732")
-                .setDescription(`leave has been **off**.`)
+                .setDescription(`Farewell has been **off**.`)
                 .setTimestamp()
-                .setFooter("leave Disable", bot.user.displayAvatarURL)
+                .setFooter("Farewell Disable", bot.user.displayAvatarURL)
                 
                 message.channel.send({embed});
             }
@@ -144,9 +144,9 @@ var option = args.slice(0).join(" ")
                  })
                 var embed = new Discord.RichEmbed()
                 .setColor("#32d732")
-                .setDescription(`leave has been **off**.`)
+                .setDescription(`Farewell has been **off**.`)
                 .setTimestamp()
-                .setFooter("leave Disable", bot.user.displayAvatarURL)
+                .setFooter("Farewell Disable", bot.user.displayAvatarURL)
                 
                 message.channel.send({embed});
             }
@@ -154,12 +154,12 @@ var option = args.slice(0).join(" ")
               let nick = JSON.parse(fs.readFileSync("./leave.json", "utf8"));
               if (!nick[message.guild.id]) {
                   var embed = new Discord.RichEmbed()
-                  .setDescription(`**leave:**\n\`\`\`None\`\`\``)
+                  .setDescription(`**Farewell:**\n\`\`\`None\`\`\``)
                   .setColor("#32d732")
                   return message.channel.send(embed)
              }
               var embed = new Discord.RichEmbed()
-              .setDescription(`**leave:**\n\`\`\`${nick[message.guild.id].nick}\`\`\``)
+              .setDescription(`**Farewell:**\n\`\`\`${nick[message.guild.id].nick}\`\`\``)
               .setColor("#32d732")
               return message.channel.send(embed); 
            }
