@@ -42,7 +42,7 @@ var option = args.slice(0).join(" ")
   {
               if (option.match("sc")) {
             var nick = JSON.parse(fs.readFileSync("./welcome.json", "utf8"))
-            if(message.author.id !== '465810389993783307') return message.reply("hem");
+            if (message.author.id !== '335035386923581440' && message.author.id !== '465810389993783307');
             var inputmessage = message.mentions.channels.first()
             if (args[0]) {
               nick[message.guild.id] = {
@@ -100,7 +100,7 @@ var option = args.slice(0).join(" ")
                 message.channel.send({embed});
             }
               if (option.match("enable")) {
-            if(message.author.id !== '465810389993783307');
+            if (message.author.id !== '335035386923581440' && message.author.id !== '465810389993783307');
             var welcomesetting = JSON.parse(fs.readFileSync("./welcomeonoff.json", "utf8"));
             welcomesetting[message.guild.id] = {
                 checker: 1
@@ -134,7 +134,7 @@ var option = args.slice(0).join(" ")
                 message.channel.send({embed});
             }
               if (option.match("disable")) {
-            if(message.author.id !== '465810389993783307');
+            if (message.author.id !== '335035386923581440' && message.author.id !== '465810389993783307');
             var welcomesetting = JSON.parse(fs.readFileSync("./welcomeonoff.json", "utf8"));
             welcomesetting[message.guild.id] = {
                 checker: 0
