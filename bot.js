@@ -198,8 +198,8 @@ bot.on("guildMemberRemove", async (member, client, message, args, level) => {
               .addRoundImage(avatar, 295, 10, 256, 256, 128)
               .toBufferAsync();
             }
-  var welcome = JSON.parse(fs.readFileSync("./welcome.json", "utf8"))
- let welcomesetting = JSON.parse(fs.readFileSync("./welcomeonoff.json", "utf8"));
+  var welcome = JSON.parse(fs.readFileSync("./leave.json", "utf8"))
+ let welcomesetting = JSON.parse(fs.readFileSync("./leaveonoff.json", "utf8"));
      if (!welcomesetting[member.guild.id]) {
     welcomesetting[member.guild.id] = {
      values: 1
@@ -211,7 +211,7 @@ bot.on("guildMemberRemove", async (member, client, message, args, level) => {
     if (values === undefined) return;
     if (values === 0) return;
     if (values === 1) {
-    var welcome = JSON.parse(fs.readFileSync("./welcome.json", "utf8"))
+    var welcome = JSON.parse(fs.readFileSync("./leave.json", "utf8"))
     if (!welcome) return;
     let channel = member.guild.channels.get(`${welcome[member.guild.id].nick}`);
     if (!channel) return;
