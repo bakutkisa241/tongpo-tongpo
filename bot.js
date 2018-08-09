@@ -216,7 +216,7 @@ bot.on("guildMemberRemove", async (member, client, message, args, level) => {
     let channel = member.guild.channels.get(`${welcome[member.guild.id].nick}`);
     if (!channel) return;
             
-            channel.send(`**GoodBye** ${member} **See You... **`)+channel.send(new Discord.Attachment(await createCanvas()));
+            channel.send(`**GoodBye** ${member.user.tag} **See You... **`)+channel.send(new Discord.Attachment(await createCanvas()));
     }
 });
 bot.on("guildMemberAdd", async (member, client, message, args, level) => {  
@@ -261,7 +261,7 @@ bot.on("guildMemberAdd", async (member, client, message, args, level) => {
     let channel = member.guild.channels.get(`${welcome[member.guild.id].nick}`);
     if (!channel) return;
   
-            channel.send(`Welcome To **${guild.name}**, **${member}** Hope You Enjoy In This Server\nYou are the **${member.guild.memberCount}** Member!`)+channel.send(new Discord.Attachment(await createCanvas()));
+            channel.send(`Welcome To **${guild.name}**, **${member.user.tag}** Hope You Enjoy In This Server\nYou are the **${member.guild.memberCount}** Member!`)+channel.send(new Discord.Attachment(await createCanvas()));
     }
 });
 bot.on('guildMemberAdd', async member => {
