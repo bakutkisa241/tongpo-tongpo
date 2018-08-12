@@ -1,7 +1,7 @@
 
 module.exports = {
     run: async (bot, guild) => {
-        const channel = bot.channels.get("476708541944692749");
+        const channel = bot.channels.get("478022259135741963");
         const log = [
             '➖ **__Left guild!__**',
             `**__Name:__** ${guild.name} (${guild.id})`,
