@@ -167,25 +167,19 @@ bot.on("message", async message => {
   let curxp = xp[message.author.id].xp;
   let curlvl = xp[message.author.id].level;
   let nxtLvl = xp[message.author.id].level * 300;
-xp[message.author.id].xp = curxp + xpAdd;
-
-
-  let curxp = xp[message.author.id].xp;
-  let curlvl = xp[message.author.id].level;
-  let nxtLvl = xp[message.author.id].level * 300;
   xp[message.author.id].xp =  curxp + xpAdd;
   if(nxtLvl <= xp[message.author.id].xp){
     xp[message.author.id].level = curlvl + 1;
     let lvlup = new Discord.RichEmbed()
     .setTitle("Level Up!")
-    .setAuthor(`Keep going ${message.author.username}!`, message.author.avatarURL)
+    .setAuthor(`Keep going ${message.author.username}!`)
     .setColor(0x32d732)
     .addField("Unlock Level", curlvl + 1)
     .setFooter("you can see your xp/level/rank by doing ?level","https://cdn.discordapp.com/avatars/471150809196003328/a0ed47f2512655b5604a94e0cfb950ef.png?size=2048")
     .setTimestamp()
 
     message.channel.send(lvlup)
-  }
+}
   fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
     if(err) console.log(err)
 });
