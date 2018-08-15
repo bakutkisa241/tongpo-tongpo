@@ -29,10 +29,10 @@ module.exports.run = async (bot, message, args, msg) => {
       arg = message.mentions.users.first().id
     }
     let user = "<@" + arg + ">"
-  let coinss = coins[user.id].coins;
+  let coinss = coins[user].coins;
   let uicon = user.displayAvatarURL;
-  let userxp = xp[user.id].xp;
-  let userlvl = xp[user.id].level;
+  let userxp = xp[user].xp;
+  let userlvl = xp[user].level;
   let nextLvlXp = userlvl * 1000;
   let difference = nextLvlXp - userxp;
   let profileEmbed = new Discord.RichEmbed()
