@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 let xp = require("../xp.json");
 let coins = require("../coins.json");
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, msg) => {
                  message.react("✅")
 
 
@@ -18,15 +18,17 @@ module.exports.run = async (bot, message, args) => {
     };
   }
   
-  let coinss = coins[message.author.id].coins;
-  let uicon = message.author.displayAvatarURL;
-  let userxp = xp[message.author.id].xp;
-  let userlvl = xp[message.author.id].level;
+  let user = msg.mentions.users.first() || client.users.get (Fuck)!
+  if(!user) user = msg.author
+  let coinss = coins[user].coins;
+  let uicon = user.displayAvatarURL;
+  let userxp = xp[user].xp;
+  let userlvl = xp[user].level;
   let nextLvlXp = userlvl * 1000;
   let difference = nextLvlXp - userxp;
   let profileEmbed = new Discord.RichEmbed()
-  .setAuthor(`${message.author.username}'s Profile`)
-  .setDescription(`${message.author.username} has not yet set a bio`)
+  .setAuthor(`${user}'s Profile`)
+  .setDescription(`${user} has not yet set a bio`)
   .setColor("#32d732")
   .setThumbnail(uicon)
   .addField("Global Level", userlvl, true)
