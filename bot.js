@@ -154,6 +154,7 @@ bot.on("message", async message => {
   }
 
   let xpAdd = Math.floor(Math.random() * 7) + 8;
+  console.log(`XP Added:   ${xpAdd}   |  User:   ${message.author.username}`);
 
   if(!xp[message.author.id]){
     xp[message.author.id] = {
@@ -161,6 +162,12 @@ bot.on("message", async message => {
       level: 1
     };
   }
+
+
+  let curxp = xp[message.author.id].xp;
+  let curlvl = xp[message.author.id].level;
+  let nxtLvl = xp[message.author.id].level * 300;
+xp[message.author.id].xp = curxp + xpAdd;
 
 
   let curxp = xp[message.author.id].xp;
