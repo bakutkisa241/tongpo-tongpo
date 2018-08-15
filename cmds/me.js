@@ -18,8 +18,17 @@ module.exports.run = async (bot, message, args, msg) => {
     };
   }
   
-  let user = msg.mentions.users.first() || client.users.get (args[0])!
-  if(!user) user = msg.author.id
+    let arg = ""
+    if (args.slice(0).join(" ") == "") {
+      arg = message.author.id
+    }
+    if (args.slice(0).join(" ") != "") {
+      if (arg = message.mentions.users.first() == undefined) {
+        return message.reply("Please provide the name of an actual user")
+      }
+      arg = message.mentions.users.first().id
+    }
+    let user = "<@" + arg + ">"
   let coinss = coins[user.id].coins;
   let uicon = user.displayAvatarURL;
   let userxp = xp[user.id].xp;
