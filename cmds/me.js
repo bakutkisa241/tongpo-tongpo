@@ -18,12 +18,12 @@ module.exports.run = async (bot, message, args, msg) => {
     };
   }
   
-  let user = msg.mentions.users.first() || client.users.get (Fuck)!
-  if(!user) user = msg.author
-  let coinss = coins[user].coins;
+  let user = msg.mentions.users.first() || client.users.get (args[0])!
+  if(!user) user = msg.author.id
+  let coinss = coins[user.id].coins;
   let uicon = user.displayAvatarURL;
-  let userxp = xp[user].xp;
-  let userlvl = xp[user].level;
+  let userxp = xp[user.id].xp;
+  let userlvl = xp[user.id].level;
   let nextLvlXp = userlvl * 1000;
   let difference = nextLvlXp - userxp;
   let profileEmbed = new Discord.RichEmbed()
