@@ -44,11 +44,11 @@ bot.on("ready", async () => {
     console.log(`Logged in as : ${bot.user.tag}`);
     console.log(`${bot.user.username} is ready!`)
                 
-//    function randomStatus() {
-//        let status = [`on ${bot.guilds.size} guilds.`, `With ${bot.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} users.`, "b!help | Bolt", "bot.discord.io/bolt", "24/7 | Vote", "Bolt | MasterBot | Team"]
-//          let rstatus = Math.floor(Math.random() * status.length);
-//       bot.user.setActivity(status[rstatus], {type: 'WATCHING', url: "https://www.twitch.tv/brickmaster__"});
-//    }; setInterval(randomStatus, 30000)
+    function randomStatus() {
+        let status = [`on ${bot.guilds.size} guilds.`, `With ${bot.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} users.`, "b!help | Bolt", "bot.discord.io/bolt", "24/7 | Vote", "Bolt | MasterBot | Team"]
+          let rstatus = Math.floor(Math.random() * status.length);
+       bot.user.setActivity(status[rstatus], {type: 'WATCHING', url: "https://www.twitch.tv/brickmaster__"});
+    }; setInterval(randomStatus, 30000)
     setInterval(() => {
     dbl.postStats(bot.guilds.size)
   }, 1800000);
