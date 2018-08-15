@@ -3,17 +3,7 @@ let xp = require("../xp.json");
 let coins = require("../coins.json");
 module.exports.run = async (bot, message, args, msg) => {
                  message.react("✅")
-      let arg = ""
-    if (args.slice(0).join(" ") == "") {
-      arg = message.author.id
-    }
-    if (args.slice(0).join(" ") != "") {
-      if (arg = message.mentions.users.first() == undefined) {
-        return message.reply("Please provide the name of an actual user")
-      }
-      arg = message.mentions.users.first().id
-    }
-    let user = "<@" + arg + ">"
+let user = message.mentions.users.first();
 
 
   if(!xp[user]){
