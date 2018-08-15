@@ -21,9 +21,8 @@ module.exports.run = async (bot, message, args) => {
   .setThumbnail(coinicon)
   .addField( "Coins", `${userCoins} \\📀`, true)
   .addField("Gain more coins", "by talking more in chat!", true)
-  .addField("Want to send coins to people?", "b!pay <user> <amount>", true)
   .setFooter(`Requested By ${message.author.username} ID: ${message.author.id}`, message.author.displayAvatarURL);
-  const mess = await message.channel.send(`<a:customloading:439644282828226571> Loading Coins of user ${message.author.id}`);
+  const mess = await message.channel.send(` Loading Coins of user ${message.author.id}`);
   mess.edit(coinEmbed).then(msg => {msg.delete(10000)});
 
 }
