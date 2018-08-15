@@ -152,51 +152,8 @@ bot.on("message", async message => {
       prefixes: config.prefix
     };
   }
-	
-	  if(message.author.bot) return;
-    if (message.channel.type === 'dm') {
-                console.log(`--------------------------------------------------------------------------------------------------------`)
-            console.log(message.author.tag + " : " + message.cleanContent);
-      Cleverbot.write(message.content, (response) => {
-                      console.log("messgae From Kim: " + response.output);
-        message.channel.startTyping()
-        setTimeout(() => {
-          message.channel.send(response.output).catch(console.error)
-          message.channel.stopTyping()
-        }, Math.random() * (1 - 3) + 1 * 1000)
-    
-      })
-    }  
-  if(!coins[message.author.id]){
-  coins[message.author.id] = {
-    coins: 0
-  }
- }
-  
-let coinAmt = Math.floor(Math.random() * 50) + 1;
-let baseAmt = Math.floor(Math.random() * 50) + 1;
-console.log(`🔰 Coin Amt: ${coinAmt} | Base Amt:  ${baseAmt}  |  User:  ${message.author.username}   |  Discord Server name:  ${message.guild.name}`);
-
-if(coinAmt === baseAmt){
-  coins[message.author.id] = {
-    coins: coins[message.author.id].coins + coinAmt
-  };
-fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
-  if (err) console.log(err)
-});
-let coinEmbed = new Discord.RichEmbed()
-.setAuthor(message.author.username)
-.setColor("#0000FF")
-.addField(":money_with_wings:", `${coinAmt} coins added to your bank ${message.author.username}!`)
-.setImage("https://cdn.glitch.com/f216f59c-fdda-43ec-8a7f-cede07534573%2Ftenor.gif?1531500354999")
-.setFooter("you can see your coins bank by doing ?coins","https://cdn.glitch.com/f216f59c-fdda-43ec-8a7f-cede07534573%2Fvideotogif_2018.06.12_19.51.27.gif?1530360190573")
-.setTimestamp()
-
-message.channel.send(coinEmbed)
-}
 
   let xpAdd = Math.floor(Math.random() * 7) + 8;
-  console.log(`XP Added:   ${xpAdd}   |  User:   ${message.author.username}`);
 
   if(!xp[message.author.id]){
     xp[message.author.id] = {
@@ -217,14 +174,16 @@ message.channel.send(coinEmbed)
     .setAuthor(`Keep going ${message.author.username}!`)
     .setColor(0x32d732)
     .addField("Unlock Level", curlvl + 1)
-    .setFooter("you can see your xp/level/rank by doing ?level","https://cdn.discordapp.com/avatars/471150809196003328/a0ed47f2512655b5604a94e0cfb950ef.png?size=2048")
+    .setFooter("you can see your xp/level/rank by doing b!level","https://cdn.discordapp.com/avatars/471150809196003328/a0ed47f2512655b5604a94e0cfb950ef.png?size=2048")
     .setTimestamp()
 
-    message.channel.send(lvlup)
-}
+message.channel.send(lvlup)
+
+  }
   fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
     if(err) console.log(err)
-  
+  });
+});
 bot.on("guildMemberRemove", async (member, client, message, args, level) => {  
             const guild = member.guild
             var namam = member.user.username
