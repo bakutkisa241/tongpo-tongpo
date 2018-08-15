@@ -154,7 +154,7 @@ bot.on("message", async message => {
   }
 
 let xpAdd = Math.floor(Math.random() * 7) + 8;
-console.log(xpAdd);
+ console.log(`XP Added:   ${xpAdd}   |  User:   ${message.author.username}`);
 
 if (!xp[message.author.id]) {
     xp[message.author.id] = {
@@ -170,14 +170,15 @@ let nxtLvl = xp[message.author.id].level * 300;
 xp[message.author.id].xp = curxp + xpAdd;
 if (nxtLvl <= xp[message.author.id].xp) {
     xp[message.author.id].level = curlvl + 1;
-    let lvlup = new Discord.RichEmbed()
-        .setTitle("Level Up!")
-        .addField("Congrats to", `${message.author}`)
-        .setColor("#08ff00")
-        .addField("New Level", curlvl + 1);
-
+     let lvlup = new Discord.RichEmbed()
+    .setTitle("Level Up!")
+    .setAuthor(`Keep going ${message.author.username}!`)
+    .setColor(0x08ff00)
+    .addField("unlock Level", curlvl + 1)
+    .setFooter("you can see your xp/level/rank by doing b!level","https://cdn.discordapp.com/avatars/471150809196003328/a0ed47f2512655b5604a94e0cfb950ef.png?size=2048")
+    .setTimestamp()
     message.channel.send(lvlup).then(msg => {
-        msg.delete(5000)
+        msg.delete(10000)
     });
 }
 fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
