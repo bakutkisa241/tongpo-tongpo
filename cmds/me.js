@@ -1,34 +1,32 @@
 const Discord = require("discord.js");
 let xp = require("../xp.json");
 let coins = require("../coins.json");
-module.exports.run = async (bot, message, args, msg) => {
+module.exports.run = async (bot, message, args) => {
                  message.react("✅")
-let user = message.mentions.users.first();
 
 
-  if(!xp[user]){
+  if(!xp[message.author.id]){
    message.channel.send(`Created New profile for user ${message.author.id}. Please retype ~profile`);    
-   xp[user] = {
+   xp[message.author.id] = {
      xp: 0,
      level: 1
   };
 }
-    if(!coins[user]){
-    coins[user] = {
+    if(!coins[message.author.id]){
+    coins[message.author.id] = {
       coins: 0
     };
   }
   
-
-  let coinss = coins[user].coins;
-  let uicon = user.displayAvatarURL;
-  let userxp = xp[user].xp;
-  let userlvl = xp[user].level;
+  let coinss = coins[message.author.id].coins;
+  let uicon = message.author.displayAvatarURL;
+  let userxp = xp[message.author.id].xp;
+  let userlvl = xp[message.author.id].level;
   let nextLvlXp = userlvl * 1000;
   let difference = nextLvlXp - userxp;
   let profileEmbed = new Discord.RichEmbed()
-  .setAuthor(`${user}'s Profile`)
-  .setDescription(`${user} has not yet set a bio`)
+  .setAuthor(`${message.author.username}'s Profile`)
+  .setDescription(`${message.author.username} has not yet set a bio`)
   .setColor("#32d732")
   .setThumbnail(uicon)
   .addField("Global Level", userlvl, true)
