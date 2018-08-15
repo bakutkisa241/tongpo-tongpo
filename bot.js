@@ -224,7 +224,7 @@ message.channel.send(coinEmbed)
 }
   fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
     if(err) console.log(err)
-});
+  }
 bot.on("guildMemberRemove", async (member, client, message, args, level) => {  
             const guild = member.guild
             var namam = member.user.username
