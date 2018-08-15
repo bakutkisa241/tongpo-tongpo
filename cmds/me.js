@@ -29,6 +29,8 @@ module.exports.run = async (bot, message, args, msg) => {
       arg = message.mentions.users.first().id
     }
     let user = "<@" + arg + ">"
+    let xp = require("../xp.json");
+let coins = require("../coins.json");
   let coinss = coins[user].coins;
   let uicon = user.displayAvatarURL;
   let userxp = xp[user].xp;
