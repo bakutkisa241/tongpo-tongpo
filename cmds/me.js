@@ -3,22 +3,7 @@ let xp = require("../xp.json");
 let coins = require("../coins.json");
 module.exports.run = async (bot, message, args, msg) => {
                  message.react("✅")
-
-
-  if(!xp[message.author.id]){
-   message.channel.send(`Created New profile for user ${message.author.id}. Please retype ~profile`);    
-   xp[message.author.id] = {
-     xp: 0,
-     level: 1
-  };
-}
-    if(!coins[message.author.id]){
-    coins[message.author.id] = {
-      coins: 0
-    };
-  }
-  
-    let arg = ""
+      let arg = ""
     if (args.slice(0).join(" ") == "") {
       arg = message.author.id
     }
@@ -29,8 +14,22 @@ module.exports.run = async (bot, message, args, msg) => {
       arg = message.mentions.users.first().id
     }
     let user = "<@" + arg + ">"
-    let xp = require("../xp.json");
-let coins = require("../coins.json");
+
+
+  if(!xp[user]){
+   message.channel.send(`Created New profile for user ${message.author.id}. Please retype ~profile`);    
+   xp[user] = {
+     xp: 0,
+     level: 1
+  };
+}
+    if(!coins[user]){
+    coins[user] = {
+      coins: 0
+    };
+  }
+  
+
   let coinss = coins[user].coins;
   let uicon = user.displayAvatarURL;
   let userxp = xp[user].xp;
