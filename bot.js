@@ -184,15 +184,15 @@ if(coinAmt === baseAmt){
 fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
   if (err) console.log(err)
 });
-let coinEmbed = new Discord.RichEmbed()
-.setAuthor(message.author.username)
-.setColor("#08ff00")
-.addField(":money_with_wings:", `${coinAmt} coins added to your bank ${message.author.username}!`)
-.setFooter("you can see your coins bank by doing b!coins","https://cdn.discordapp.com/avatars/471150809196003328/a0ed47f2512655b5604a94e0cfb950ef.png?size=2048")
-.setTimestamp()
-    message.channel.send(coinEmbed).then(msg => {
-        msg.delete(10000)
-    });
+//let coinEmbed = new Discord.RichEmbed()
+//.setAuthor(message.author.username)
+//.setColor("#08ff00")
+//.addField(":money_with_wings:", `${coinAmt} coins added to your bank ${message.author.username}!`)
+//.setFooter("you can see your coins bank by doing b!coins","https://cdn.discordapp.com/avatars/471150809196003328/a0ed47f2512655b5604a94e0cfb950ef.png?size=2048")
+//.setTimestamp()
+//    message.channel.send(coinEmbed).then(msg => {
+//        msg.delete(10000)
+//    });
 }
 fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
             if (err) console.log(err)
@@ -215,16 +215,16 @@ let nxtLvl = xp[message.author.id].level * 300;
 xp[message.author.id].xp = curxp + xpAdd;
 if (nxtLvl <= xp[message.author.id].xp) {
     xp[message.author.id].level = curlvl + 1;
-     let lvlup = new Discord.RichEmbed()
-    .setTitle("Level Up!")
-    .setAuthor(`Keep going ${message.author.username}!`)
-    .setColor(0x08ff00)
-    .addField("unlock Level", curlvl + 1)
-    .setFooter("you can see your xp/level/rank by doing b!level","https://cdn.discordapp.com/avatars/471150809196003328/a0ed47f2512655b5604a94e0cfb950ef.png?size=2048")
-    .setTimestamp()
-    message.channel.send(lvlup).then(msg => {
-        msg.delete(10000)
-    });
+//     let lvlup = new Discord.RichEmbed()
+//    .setTitle("Level Up!")
+//    .setAuthor(`Keep going ${message.author.username}!`)
+//    .setColor(0x08ff00)
+//    .addField("unlock Level", curlvl + 1)
+//    .setFooter("you can see your xp/level/rank by doing b!level","https://cdn.discordapp.com/avatars/471150809196003328/a0ed47f2512655b5604a94e0cfb950ef.png?size=2048")
+//    .setTimestamp()
+//    message.channel.send(lvlup).then(msg => {
+//        msg.delete(10000)
+//    });
 }
 fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
             if (err) console.log(err)
