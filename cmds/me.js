@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 const xp = require("../xp.json");
 const coins = require("../coins.json");
-let user = message.members.mentions.first() || message.atuhor.id;
 module.exports.run = async (bot, message, args) => {
+let user = message.members.mentions.first() || message.atuhor.id;
                  message.react("✅")
 
 
@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
     };
   }
   
-  let coinss = coins[message.author.id].coins;
+  let coinss = coins[user.id].coins;
   let uicon = message.author.displayAvatarURL;
   let userxp = xp[user.id].xp;
   let userlvl = xp[user.id].level;
