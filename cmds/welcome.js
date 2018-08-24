@@ -64,28 +64,7 @@ var option = args.slice(0).join(" ")
             }
                 if (option.match("img")) {
             var welcomeimg = JSON.parse(fs.readFileSync("./backgroundj.json", "utf8"))
-            if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`**Sorry, But You Need \`MANAGE CHANNELS\` Permissions To Use This Command!**`);
-            var inputmessage = args.slice(1).join(" ")
-            if (args[1]) {
-              welcomeimg[message.guild.id] = {
-                nick: inputmessage
-             };
-              fs.writeFile("./backgroundj.json", JSON.stringify(welcomeimg), (err) => {
-                if (err) console.log(err)
-             });
-              
-              var embed = new Discord.RichEmbed()
-              .setColor("#32d732")
-              .setDescription(`Welcome Img set to\n\n${inputmessage}`)
-              .setTimestamp()
-              
-              message.channel.send({embed});
-            }
-            }
-            
-                            if (option.match("image")) {
-            var welcomeimg = JSON.parse(fs.readFileSync("./backgroundj.json", "utf8"))
-            if (message.author.id !== '335035386923581440' && message.author.id !== '465810389993783307');
+            if (!message.member.hasPermission("MANAGE_NICKNAMES")) return message.reply("Sorry, you don't have permissions to do this!");
             var inputmessage = args.slice(1).join(" ")
             if (args[1]) {
               welcomeimg[message.guild.id] = {
