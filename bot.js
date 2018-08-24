@@ -233,11 +233,16 @@ fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
 bot.on("guildMemberRemove", async (member, client, message, args, level) => {  
             const guild = member.guild
             var namam = member.user.username
-            var jadim = namam.length > 12 ? namam.substring(0, 10) + "..." : namam;
+            var jadim = namam.length > 22 ? namam.substring(0, 10) + "..." : namam;
             async function createCanvas() {
             var imageUrlRegex = /\?size=2048$/g;
-
-            var {body: background} = await superagent.get("https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg");
+            var background = JSON.parse(fs.readFileSync("./backgroundl.json", "utf8"))
+                  if (!background[member.guild.id]){
+        background[member.guild.id] = {
+backgrounds: "https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg"};
+}
+            let bk = background[guild.id].nick;
+            var {body: background} = await superagent.get(`${bk}`);
             var {body: avatar} = await superagent.get(member.user.displayAvatarURL.replace(imageUrlRegex, "?size=128"));
 
             return new Canvas(856, 376)
@@ -277,12 +282,16 @@ bot.on("guildMemberRemove", async (member, client, message, args, level) => {
 bot.on("guildMemberAdd", async (member, client, message, args, level) => {  
 	    const guild = member.guild;
             var namam = member.user.username
-            var jadim = namam.length > 12 ? namam.substring(0, 10) + "..." : namam;
+            var jadim = namam.length > 22 ? namam.substring(0, 10) + "..." : namam;
             async function createCanvas() {
             var imageUrlRegex = /\?size=2048$/g;
+                        var background = JSON.parse(fs.readFileSync("./backgroundj.json", "utf8"))
+                  if (!background[member.guild.id]){
+        background[member.guild.id] = {
+backgrounds: "https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg"};
+}
 
-
-            var {body: background} = await superagent.get("https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg");
+            var {body: background} = await superagent.get(`https://cdn.discordapp.com/attachments/474519018275995658/477459041967407105/Uchiha-sasuke-wall.jpg`);
             var {body: avatar} = await superagent.get(member.user.displayAvatarURL.replace(imageUrlRegex, "?size=128"));
 
 
