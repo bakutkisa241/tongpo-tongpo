@@ -242,7 +242,7 @@ bot.on("guildMemberRemove", async (member, client, message, args, level) => {
 backgrounds: "https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg"};
 }
             let bk = background[guild.id].nick;
-            var {body: background} = await superagent.get(`${bk}`);
+            var {body: background} = await superagent.get(`https://cdn.discordapp.com/attachments/478872920576360450/482558376052523008/download.jpg`);
             var {body: avatar} = await superagent.get(member.user.displayAvatarURL.replace(imageUrlRegex, "?size=128"));
 
             return new Canvas(856, 376)
@@ -292,7 +292,7 @@ backgrounds: "https://cdn.discordapp.com/attachments/469828599847845890/47569752
 }
 
 	    let bk = background[guild.id].nick;
-            var {body: background} = await superagent.get(`${bk}`);
+            var {body: background} = await superagent.get(`https://cdn.discordapp.com/attachments/478872920576360450/482558376052523008/download.jpg`);
             var {body: avatar} = await superagent.get(member.user.displayAvatarURL.replace(imageUrlRegex, "?size=128"));
 
 
