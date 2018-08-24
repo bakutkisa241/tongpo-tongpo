@@ -12,6 +12,7 @@ var option = args.slice(0).join(" ")
 - \`b!farewells set #channel\`
 - \`b!farewells on\`
 - \`b!farewells off\`
+- \`b!farewells img [URL]\`
 `)
               .setFooter("Farewell", bot.user.displayAvatarURL)
               .setTimestamp()
@@ -62,20 +63,20 @@ var option = args.slice(0).join(" ")
             }
             }
                 if (option.match("img")) {
-            var welcomeimg = JSON.parse(fs.readFileSync("./leave.json", "utf8"))
+            var welcomeimg = JSON.parse(fs.readFileSync("./backgroundl.json", "utf8"))
             if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`**Sorry, But You Need \`MANAGE CHANNELS\` Permissions To Use This Command!**`);
             var inputmessage = args.slice(0).join(" ")
             if (args[1]) {
               welcomeimg[message.guild.id] = {
                 nick: inputmessage
              };
-              fs.writeFile("./leave.json", JSON.stringify(welcomeimg), (err) => {
+              fs.writeFile("./backgroundl.json", JSON.stringify(welcomeimg), (err) => {
                 if (err) console.log(err)
              });
               
               var embed = new Discord.RichEmbed()
               .setColor("#32d732")
-              .setDescription(`Farewells set to\n\n${inputmessage}`)
+              .setDescription(`Farewells IMG set to\n\n${inputmessage}`)
               .setTimestamp()
               
               message.channel.send({embed});
