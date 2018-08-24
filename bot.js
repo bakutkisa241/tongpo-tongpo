@@ -239,7 +239,7 @@ bot.on("guildMemberRemove", async (member, client, message, args, level) => {
 		                var background = JSON.parse(fs.readFileSync("./backgroundl.json", "utf8"))
                   if (!background[member.guild.id]){
         background[member.guild.id] = {
-backgrounds: "https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg"};
+background: "https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg"};
 }
             let bk = background[guild.id].nick;
             var {body: background} = await superagent.get(`${bk}`);
@@ -288,7 +288,7 @@ bot.on("guildMemberAdd", async (member, client, message, args, level) => {
 		                            var background = JSON.parse(fs.readFileSync("./backgroundj.json", "utf8"))
                   if (!background[member.guild.id]){
         background[member.guild.id] = {
-backgrounds: "https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg"};
+background: "https://cdn.discordapp.com/attachments/469828599847845890/475697528365645825/679503310_preview_c792c7333c00d3b3f95ef4f2247f99d4201ca162.jpg"};
 }
 
 	    let bk = background[guild.id].nick;
