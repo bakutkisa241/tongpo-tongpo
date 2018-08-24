@@ -65,7 +65,7 @@ var option = args.slice(0).join(" ")
                 if (option.match("img")) {
             var welcomeimg = JSON.parse(fs.readFileSync("./backgroundl.json", "utf8"))
             if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply(`**Sorry, But You Need \`MANAGE CHANNELS\` Permissions To Use This Command!**`);
-            var inputmessage = args.slice(0).join(" ")
+            var inputmessage = args.slice(1).join(" ")
             if (args[1]) {
               welcomeimg[message.guild.id] = {
                 nick: inputmessage
@@ -86,7 +86,7 @@ var option = args.slice(0).join(" ")
                             if (option.match("image")) {
             var welcomeimg = JSON.parse(fs.readFileSync("./backgroundj.json", "utf8"))
             if (message.author.id !== '335035386923581440' && message.author.id !== '465810389993783307');
-            var inputmessage = args.slice(0).join(" ")
+            var inputmessage = args.slice(1).join(" ")
             if (args[1]) {
               welcomeimg[message.guild.id] = {
                 nick: inputmessage
